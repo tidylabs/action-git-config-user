@@ -1,6 +1,9 @@
 name: "Configure git user"
 description: >
   Configure the git user (name and email) using a personal access token
+branding:
+  icon: user
+  color: gray-dark
 inputs:
   token:
     description: >
