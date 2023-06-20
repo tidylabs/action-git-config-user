@@ -19,6 +19,4 @@ This Node.js-based action requires `node@16` for development. After cloning the
 repository run `npm install` to download all the required dependencies.
 
 This action uses [vercel/ncc](https://github.com/vercel/ncc) to bundle
-dependencies. After every change to `index.js`, `package.json`, or
-`package-lock.json` it is necessary to execute `npm run prepare` in order to
-run `ncc` to update `dist/index.js`.
+dependencies automatically when a new release is created.
