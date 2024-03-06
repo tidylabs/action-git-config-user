@@ -1,5 +1,5 @@
 import { getInput, setFailed } from "@actions/core";
-import { exec as _exec } from "@actions/exec";
+import { exec } from "@actions/exec";
 import { graphql } from "@octokit/graphql";
 
 async function run() {
@@ -16,8 +16,8 @@ async function run() {
     email ||= `${databaseId}+${login}@users.noreply.github.com`;
 
     // Set name and email using "git config".
-    await _exec(`git config --global user.name ${name}`);
-    await _exec(`git config --global user.email ${email}`);
+    await exec(`git config --global user.name '${name}'`);
+    await exec(`git config --global user.email '${email}'`);
   } catch (error) {
     setFailed(error.message);
   }
