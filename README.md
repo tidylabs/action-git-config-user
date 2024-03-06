@@ -31,6 +31,13 @@ npx npm-check-updates -u
 npm update
 ```
 
+### Formatting
+
+Code formatting is performed programmatically using the
+[Prettier](https://prettier.io) code formatter. The entire codebase can be
+formatted using `npm run format`. All changes must be formatted prior to being
+committed and merged.
+
 ### Tests
 
 Testing is performed using the [Jest](https://jestjs.io) testing framework. The

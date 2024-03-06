@@ -6,7 +6,9 @@ async function run() {
   try {
     // Fetch authenticated user info using GraphQL API.
     const token = getInput("token");
-    let { viewer: { login, name, email, databaseId } } = await graphql({
+    let {
+      viewer: { login, name, email, databaseId },
+    } = await graphql({
       query: `{ viewer { login name email databaseId } }`,
       headers: { authorization: `bearer ${token}` },
     });
