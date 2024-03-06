@@ -30,3 +30,9 @@ can also be performed manually using:
 npx npm-check-updates -u
 npm update
 ```
+
+### Tests
+
+Testing is performed using the [Jest](https://jestjs.io) testing framework. The
+tests can be run using `npm test`. All changes should maintain 100% code
+coverage by including tests for any added lines of code.
