@@ -19,5 +19,8 @@
   },
   "jest": {
     "transform": {}
+  },
+  "engines": {
+    "node": "20.x"
   }
 }
