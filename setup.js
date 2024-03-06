@@ -1,7 +1,7 @@
-const fs = require('fs');
-const path = require('path');
-const child_process = require("child_process");
+import { existsSync } from "fs";
+import { join } from "path";
+import { execSync } from "child_process";
 
-if (fs.existsSync(path.join(__dirname, "/package-lock.json"))) {
-  child_process.execSync("npm ci", { cwd: __dirname });
+if (existsSync(join(__dirname, "/package-lock.json"))) {
+  execSync("npm ci --omit optional", { cwd: __dirname });
 }

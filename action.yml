@@ -10,6 +10,6 @@ inputs:
       Personal access token (PAT) used to query for the authenticated user.
     default: ${{ github.token }}
 runs:
-  using: "node16"
+  using: "node20"
   pre: "setup.js"
   main: "index.js"
