@@ -18,8 +18,8 @@ async function run() {
     email ||= `${databaseId}+${login}@users.noreply.github.com`;
 
     // Set name and email using "git config".
-    await exec(`git config --global user.name '${name}'`);
-    await exec(`git config --global user.email '${email}'`);
+    await exec("git", ["config", "--global", "user.name", name]);
+    await exec("git", ["config", "--global", "user.email", email]);
   } catch (error) {
     setFailed(error.message);
   }

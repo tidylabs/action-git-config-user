@@ -53,10 +53,12 @@ it("uses <name> by default", async () => {
   await runAction();
 
   expect(exec).toHaveBeenCalledTimes(2);
-  expect(exec).toHaveBeenNthCalledWith(
-    1,
-    "git config --global user.name 'TEST NAME'",
-  );
+  expect(exec).toHaveBeenNthCalledWith(1, "git", [
+    "config",
+    "--global",
+    "user.name",
+    "TEST NAME",
+  ]);
 });
 
 it("uses <login> when <name> is undefined", async () => {
@@ -68,10 +70,12 @@ it("uses <login> when <name> is undefined", async () => {
   await runAction();
 
   expect(exec).toHaveBeenCalledTimes(2);
-  expect(exec).toHaveBeenNthCalledWith(
-    1,
-    "git config --global user.name 'test_login'",
-  );
+  expect(exec).toHaveBeenNthCalledWith(1, "git", [
+    "config",
+    "--global",
+    "user.name",
+    "test_login",
+  ]);
 });
 
 it("uses <email> by default", async () => {
@@ -85,10 +89,12 @@ it("uses <email> by default", async () => {
   await runAction();
 
   expect(exec).toHaveBeenCalledTimes(2);
-  expect(exec).toHaveBeenNthCalledWith(
-    2,
-    "git config --global user.email 'test_email@invalid.com'",
-  );
+  expect(exec).toHaveBeenNthCalledWith(2, "git", [
+    "config",
+    "--global",
+    "user.email",
+    "test_email@invalid.com",
+  ]);
 });
 
 it("uses <databaseId>+<login>@users.noreply.github.com when <email> is undefined", async () => {
@@ -101,10 +107,12 @@ it("uses <databaseId>+<login>@users.noreply.github.com when <email> is undefined
   await runAction();
 
   expect(exec).toHaveBeenCalledTimes(2);
-  expect(exec).toHaveBeenNthCalledWith(
-    2,
-    "git config --global user.email '123456+test_login@users.noreply.github.com'",
-  );
+  expect(exec).toHaveBeenNthCalledWith(2, "git", [
+    "config",
+    "--global",
+    "user.email",
+    "123456+test_login@users.noreply.github.com",
+  ]);
 });
 
 it("sets failure message on error", async () => {
