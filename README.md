@@ -8,7 +8,7 @@ token (PAT) to query the GraphQL API for the authenticated user.
 ## Usage
 
 ```yaml
-- uses: tidylabs/action-git-config-user@v1
+- uses: tidylabs/action-git-config-user@v2
   with:
     # Personal access token (PAT) used to query for the authenticated user.
     # Default: ${{ github.token }}
