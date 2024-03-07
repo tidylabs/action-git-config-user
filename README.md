@@ -1,5 +1,7 @@
 # Configure git user
 
+[![CI Status](https://github.com/tidylabs/action-git-config-user/workflows/CI/badge.svg?branch=main)](https://github.com/tidylabs/action-git-config-user/actions?query=workflow:CI+branch:main)
+
 This action configures the git user (name and email) by using a personal access
 token (PAT) to query the GraphQL API for the authenticated user.
 
