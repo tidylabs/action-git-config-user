@@ -4,10 +4,13 @@ on:
   release:
     types: [published, edited]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   publish:
     runs-on: ubuntu-latest
-    concurrency: publish
 
     permissions:
       contents: write
@@ -18,7 +21,7 @@ jobs:
         with:
           ref: ${{ github.event.release.tag_name }}
 
-      - name: Use Node.js
+      - name: Use Node.js 20.x
         uses: actions/setup-node@v4
         with:
           node-version: 20.x
@@ -26,11 +29,8 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci --omit optional
 
-      - name: Run @vercel/ncc
+      - name: Run `@vercel/ncc`
         run: npm run dist
-
-      - name: Update action.yml
-        run: sed -Ei '/pre:.+/d ; s/index.js/dist\/index.js/' action.yml
 
       - name: Create tags and publish
         uses: JasonEtco/build-and-tag-action@v2
