@@ -1,5 +1,5 @@
 {
-  "main": "dist/index.js",
+  "main": "dist/index.mjs",
   "type": "module",
   "scripts": {
     "dist": "ncc build index.mjs --license licenses.txt --minify",
