@@ -109,4 +109,4 @@ jobs:
           fi
 
       - name: Enable auto-merge on Dependabot PR
-        run: gh pr merge --auto --merge "$PR_URL"
+        run: gh pr merge --auto --squash "$PR_URL"
