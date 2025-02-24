@@ -2,7 +2,7 @@
   "main": "dist/index.mjs",
   "type": "module",
   "scripts": {
-    "dist": "ncc build index.mjs --license licenses.txt --minify",
+    "dist": "ncc build index.mjs --license LICENSES --minify",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage"

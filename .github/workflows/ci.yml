@@ -14,7 +14,8 @@ jobs:
   format:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Use Node.js 20.x
         uses: actions/setup-node@v4
@@ -30,7 +31,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Use Node.js 20.x
         uses: actions/setup-node@v4
@@ -45,8 +47,11 @@ jobs:
 
   dist:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Use Node.js 20.x
         uses: actions/setup-node@v4
@@ -71,32 +76,39 @@ jobs:
           BOT_NAME: github-actions[bot]
           BOT_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
 
+      - name: Update dist/ files if needed in Dependabot PR
+        if: >
+          github.event_name == 'pull_request'
+        run: |
+          cat .git/config
+          git add dist/*
+          git commit -m "[dependabot skip] Update dist/ files"
+          git push origin HEAD:${{ github.head_ref }}
+
   auto-approve:
     runs-on: ubuntu-latest
     needs: [format, test, dist]
     if: >
       github.event_name == 'pull_request' &&
       github.event.pull_request.user.login == 'dependabot[bot]'
-
     permissions:
       contents: write
       pull-requests: write
-
     env:
       GH_TOKEN: ${{ github.token }}
       PR_URL: ${{ github.event.pull_request.html_url }}
-
     steps:
       - name: Fetch Dependabot PR metadata
         id: dependabot-metadata
         uses: dependabot/fetch-metadata@v2
 
-      - name: Checkout code
+      - name: Checkout PR code
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Approve Dependabot PR
         run: |
-          gh pr checkout "$PR_URL"
           if [ \
             "$(gh pr status \
               --json reviewDecision \
