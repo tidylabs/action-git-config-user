@@ -8,7 +8,7 @@
     "test": "NODE_OPTIONS=--experimental-vm-modules jest --coverage"
   },
   "dependencies": {
-    "@actions/core": "^2.0.1",
+    "@actions/core": "^2.0.2",
     "@actions/exec": "^2.0.0",
     "@octokit/graphql": "^9.0.3"
   },
