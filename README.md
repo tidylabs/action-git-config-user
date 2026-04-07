@@ -8,7 +8,7 @@ token (PAT) to query the GraphQL API for the authenticated user.
 ## Usage
 
 ```yaml
-- uses: tidylabs/action-git-config-user@v2
+- uses: tidylabs/action-git-config-user@v3
   with:
     # Personal access token (PAT) used to query for the authenticated user.
     # Default: ${{ github.token }}
@@ -17,7 +17,7 @@ token (PAT) to query the GraphQL API for the authenticated user.
 
 ## Contributing
 
-This Node.js-based action requires `node@20` for development. After cloning the
+This Node.js-based action requires `node@24` for development. After cloning the
 repository run `npm install` to download all the required dependencies.
 
 This action uses [vercel/ncc](https://github.com/vercel/ncc) to bundle
